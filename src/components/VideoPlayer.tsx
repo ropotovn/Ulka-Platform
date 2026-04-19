@@ -9,12 +9,14 @@ export function VideoPlayer({ title, subtitle }: VideoPlayerProps) {
   return (
     <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-gray-900 aspect-video">
       <iframe
-        src="https://rutube.ru/play/embed/331e5bb6b8db2f68efee3ae58ca31e0c/?p=6U8Cr9uNevwKksLmYkZStQ&skinColor=7fc6e3"
+        src="https://rutube.ru/play/embed/818504848d85e4826521d6cf2590182e/?skinColor=7fc6e3"
         className="w-full h-full"
         style={{ border: "none" }}
         allow="clipboard-write; autoplay"
         allowFullScreen
+        title={title || "ULKA Platform video"}
       />
     </div>
   );
 }
+
