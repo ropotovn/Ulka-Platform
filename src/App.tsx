@@ -13,8 +13,29 @@ import { FinalCTA } from './components/FinalCTA';
 import { Navigation } from './components/Navigation';
 
 function App() {
+
   useEffect(() => {
-    // Smooth scroll for anchor links
+    // --- Яндекс Метрика ---
+    (function(m: any,e: any,t: any,r: any,i: any,k: any,a: any){
+      m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+      m[i].l=1*new Date();
+      for (let j = 0; j < document.scripts.length; j++) {
+        if (document.scripts[j].src === r) { return; }
+      }
+      k=e.createElement(t),a=e.getElementsByTagName(t)[0];
+      k.async=1;
+      k.src=r;
+      a.parentNode.insertBefore(k,a);
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js','ym');
+
+    (window as any).ym(108670356, 'init', {
+      clickmap: true,
+      trackLinks: true,
+      accurateTrackBounce: true,
+      webvisor: true,
+    });
+
+    // --- Smooth scroll ---
     const handleAnchorClick = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
       const anchor = target.closest('a[href^="#"]');
@@ -31,7 +52,10 @@ function App() {
     };
 
     document.addEventListener('click', handleAnchorClick);
-    return () => document.removeEventListener('click', handleAnchorClick);
+
+    return () => {
+      document.removeEventListener('click', handleAnchorClick);
+    };
   }, []);
 
   return (
