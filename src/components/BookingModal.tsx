@@ -159,7 +159,7 @@ export function BookingModal({ isOpen, onClose, onSuccess }: BookingModalProps) 
               {/* YooMoney Button */}
               <div className="flex justify-center">
                 <iframe
-                  src="https://yoomoney.ru/quickpay/fundraise/button?billNumber=1H89JS8SP1I.260419"
+                  src="https://yoomoney.ru/quickpay/fundraise/button?billNumber=1H89JS8SP1I.260419&"
                   width="260"
                   height="50"
                   frameBorder="0"
