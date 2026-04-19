@@ -1,8 +1,5 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
-import { BookingModal } from './BookingModal';
-import { PaymentModal } from './PaymentModal';
-import { SuccessModal } from './SuccessModal';
 
 const navLinks = [
   { label: 'О платформе', href: '#about' },
@@ -14,26 +11,12 @@ const navLinks = [
 export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isBookingOpen, setIsBookingOpen] = useState(false);
-  const [isPaymentOpen, setIsPaymentOpen] = useState(false);
-  const [isSuccessOpen, setIsSuccessOpen] = useState(false);
-  const [customerData, setCustomerData] = useState<{ name: string; email: string; childAge: number } | null>(null);
 
-  const handleBookingSubmit = (data: { name: string; email: string; childAge: number }) => {
-    setCustomerData(data);
-    setIsBookingOpen(false);
-    setIsPaymentOpen(true);
-  };
-
-  const handlePaymentComplete = () => {
-    setIsPaymentOpen(false);
-    setIsSuccessOpen(true);
-  };
-
-  const handleCloseAll = () => {
-    setIsBookingOpen(false);
-    setIsPaymentOpen(false);
-    setIsSuccessOpen(false);
+  const scrollToBooking = () => {
+    document.getElementById('booking')?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+    });
   };
 
   useEffect(() => {
@@ -54,6 +37,7 @@ export function Navigation() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
+
           {/* Logo */}
           <a href="#" className="flex items-center pl-2 sm:pl-3 lg:pl-4 shrink-0">
             <span className="block font-extrabold text-[2.65rem] leading-none text-gray-900 tracking-[-0.06em] lowercase">
@@ -77,7 +61,7 @@ export function Navigation() {
           {/* CTA Button */}
           <div className="hidden md:block">
             <button
-              onClick={() => setIsBookingOpen(true)}
+              onClick={scrollToBooking}
               className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-[#5BC0EB] to-[#FF6B9A] text-white font-semibold text-sm shadow-lg shadow-[#5BC0EB]/25 hover:shadow-xl hover:shadow-[#5BC0EB]/30 transition-all hover:-translate-y-0.5"
             >
               Забронировать место
@@ -111,9 +95,10 @@ export function Navigation() {
                   {link.label}
                 </a>
               ))}
+
               <button
                 onClick={() => {
-                  setIsBookingOpen(true);
+                  scrollToBooking();
                   setIsMobileMenuOpen(false);
                 }}
                 className="mt-2 w-full px-6 py-3 rounded-xl bg-gradient-to-r from-[#5BC0EB] to-[#FF6B9A] text-white font-semibold shadow-lg shadow-[#5BC0EB]/25 hover:shadow-xl transition-all"
@@ -124,26 +109,6 @@ export function Navigation() {
           </div>
         )}
       </div>
-
-      {/* Модальные окна */}
-      <BookingModal
-        isOpen={isBookingOpen}
-        onClose={() => setIsBookingOpen(false)}
-        onSuccess={handleBookingSubmit}
-      />
-
-      <PaymentModal
-        isOpen={isPaymentOpen}
-        onClose={() => setIsPaymentOpen(false)}
-        onPaymentComplete={handlePaymentComplete}
-        customerData={customerData || { name: '', email: '', childAge: 8 }}
-      />
-
-      <SuccessModal
-        isOpen={isSuccessOpen}
-        onClose={handleCloseAll}
-        customerName={customerData?.name || ''}
-      />
     </nav>
   );
 }
