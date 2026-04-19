@@ -47,39 +47,6 @@ export function FinalCTA() {
             <p className="text-sm sm:text-base text-white/80 mb-10 font-medium tracking-[0.01em]">
               Ребёнка нельзя оценить — его можно понять.
             </p>
-
-            <div className="relative flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
-              {/* Декоративные иконки талантов */}
-              <div className="absolute -left-16 top-0 hidden lg:block animate-float-slow">
-                <div className="w-12 h-12 rounded-2xl bg-white/20 backdrop-blur-sm flex items-center justify-center">
-                  <Star className="w-6 h-6 text-white" />
-                </div>
-              </div>
-              <div className="absolute -left-10 -bottom-8 hidden lg:block animate-float-delayed">
-                <div className="w-10 h-10 rounded-xl bg-white/15 backdrop-blur-sm flex items-center justify-center">
-                  <Heart className="w-5 h-5 text-white" />
-                </div>
-              </div>
-              <div className="absolute -right-14 top-4 hidden lg:block animate-float">
-                <div className="w-11 h-11 rounded-2xl bg-white/20 backdrop-blur-sm flex items-center justify-center">
-                  <Brain className="w-6 h-6 text-white" />
-                </div>
-              </div>
-              <div className="absolute -right-10 -bottom-6 hidden lg:block animate-float-slow">
-                <div className="w-9 h-9 rounded-xl bg-white/15 backdrop-blur-sm flex items-center justify-center">
-                  <Zap className="w-5 h-5 text-white" />
-                </div>
-              </div>
-              <div className="absolute -right-20 -top-8 hidden lg:block animate-float-delayed">
-                <div className="w-10 h-10 rounded-2xl bg-white/18 backdrop-blur-sm flex items-center justify-center">
-                  <Trophy className="w-5 h-5 text-white" />
-                </div>
-              </div>
-              <div className="absolute -left-12 -top-10 hidden lg:block animate-float">
-                <div className="w-8 h-8 rounded-xl bg-white/15 backdrop-blur-sm flex items-center justify-center">
-                  <Sparkles className="w-4 h-4 text-white" />
-                </div>
-              </div>
               
               <button 
                 onClick={() => setIsBookingOpen(true)}
