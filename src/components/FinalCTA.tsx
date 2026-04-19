@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Users, Clock, Star, Heart, Brain, Zap, Trophy, Sparkles } from 'lucide-react';
+import { Users, Clock } from 'lucide-react';
 import { Mascot } from './Mascot';
 import { BookingModal } from './BookingModal';
 import { PaymentModal } from './PaymentModal';
@@ -32,7 +32,8 @@ export function FinalCTA() {
     <section className="py-24 bg-gradient-to-br from-[#5BC0EB] via-[#5BC0EB] to-[#FF6B9A]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative max-w-4xl mx-auto text-center">
-          {/* Background decorations */}
+
+          {/* Фоновые декоративные пятна */}
           <div className="absolute -top-10 -left-10 w-40 h-40 bg-white/10 rounded-full blur-3xl" />
           <div className="absolute -bottom-10 -right-10 w-60 h-60 bg-[#3ED598]/20 rounded-full blur-3xl" />
 
@@ -47,10 +48,12 @@ export function FinalCTA() {
             <p className="text-sm sm:text-base text-white/80 mb-10 font-medium tracking-[0.01em]">
               Ребёнка нельзя оценить — его можно понять.
             </p>
-              
+
+            {/* Кнопка */}
+            <div className="flex justify-center mb-8">
               <button 
                 onClick={() => setIsBookingOpen(true)}
-                className="relative px-10 py-5 rounded-2xl bg-white text-[#5BC0EB] font-bold text-lg shadow-2xl hover:shadow-3xl transition-all hover:-translate-y-1 group"
+                className="px-10 py-5 rounded-2xl bg-white text-[#5BC0EB] font-bold text-lg shadow-2xl hover:shadow-3xl transition-all hover:-translate-y-1 group"
               >
                 <span className="flex items-center gap-2">
                   Забронировать место
@@ -59,6 +62,7 @@ export function FinalCTA() {
               </button>
             </div>
 
+            {/* Инфо */}
             <div className="flex flex-wrap items-center justify-center gap-8 text-white/80">
               <div className="flex items-center gap-2">
                 <Users className="w-5 h-5" />
@@ -70,15 +74,22 @@ export function FinalCTA() {
               </div>
             </div>
 
-            {/* Floating mascot */}
+            {/* Маскот */}
             <div className="absolute -right-4 lg:-right-20 top-1/2 -translate-y-1/2 hidden lg:block">
-              <Mascot size="lg" emotion="proud" accessory={["medal", "scarf"]} pose="wave" className="animate-bounce-slow opacity-90" />
+              <Mascot 
+                size="lg" 
+                emotion="proud" 
+                accessory={["medal", "scarf"]} 
+                pose="wave" 
+                className="animate-bounce-slow opacity-90" 
+              />
             </div>
+
           </div>
         </div>
       </div>
 
-      {/* Модальные окна */}
+      {/* Модалки */}
       <BookingModal
         isOpen={isBookingOpen}
         onClose={() => setIsBookingOpen(false)}
