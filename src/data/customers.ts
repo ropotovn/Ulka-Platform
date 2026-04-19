@@ -1,6 +1,8 @@
 // Хранилище данных клиентов
 // Данные сохраняются здесь и могут быть извлечены из GitHub
 
+const STORAGE_KEY = 'customers';
+
 export interface CustomerData {
   id: string;
   name: string;
@@ -11,35 +13,48 @@ export interface CustomerData {
   status: 'pending' | 'paid' | 'completed';
 }
 
-// Массив для хранения данных клиентов
-export const customers: CustomerData[] = [];
+// Загрузка из localStorage
+function loadCustomers(): CustomerData[] {
+  const data = localStorage.getItem(STORAGE_KEY);
+  return data ? JSON.parse(data) : [];
+}
 
-// Функция для добавления нового клиента
-export function addCustomer(data: Omit<CustomerData, 'id' | 'createdAt' | 'status'>): CustomerData {
+// Сохранение в localStorage
+function saveCustomers(customers: CustomerData[]) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(customers));
+}
+
+// Добавление клиента
+export function addCustomer(
+  data: Omit<CustomerData, 'id' | 'createdAt' | 'status'>
+): CustomerData {
+  const customers = loadCustomers();
+
   const newCustomer: CustomerData = {
     ...data,
-    id: `customer_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
+    id: `customer_${Date.now()}`,
     createdAt: new Date().toISOString(),
     status: 'pending',
   };
-  
+
   customers.push(newCustomer);
-  console.log('Новый клиент добавлен:', newCustomer);
-  console.log('Всего клиентов:', customers.length);
-  
+  saveCustomers(customers);
+
   return newCustomer;
 }
 
-// Функция для обновления статуса оплаты
-export function updateCustomerStatus(id: string, status: CustomerData['status']): void {
-  const customer = customers.find(c => c.id === id);
-  if (customer) {
-    customer.status = status;
-    console.log('Статус клиента обновлён:', customer);
-  }
+// Получение всех клиентов
+export function getAllCustomers(): CustomerData[] {
+  return loadCustomers();
 }
 
-// Функция для получения всех клиентов
-export function getAllCustomers(): CustomerData[] {
-  return customers;
+// Обновление статуса
+export function updateCustomerStatus(id: string, status: CustomerData['status']) {
+  const customers = loadCustomers();
+  const customer = customers.find(c => c.id === id);
+
+  if (customer) {
+    customer.status = status;
+    saveCustomers(customers);
+  }
 }
