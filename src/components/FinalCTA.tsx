@@ -29,7 +29,7 @@ export function FinalCTA() {
   };
 
   return (
-    <section className="py-24 bg-gradient-to-br from-[#5BC0EB] via-[#5BC0EB] to-[#FF6B9A]">
+    <section id="booking" className="py-24 bg-gradient-to-br from-[#5BC0EB] via-[#5BC0EB] to-[#FF6B9A]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative max-w-4xl mx-auto text-center">
 
