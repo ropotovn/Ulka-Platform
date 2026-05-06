@@ -24,8 +24,10 @@ export function PaymentModal({ isOpen, onClose, onPaymentComplete, customerData 
       />
       
       {/* Модальное окно */}
-      <div className="relative bg-white rounded-3xl shadow-2xl max-w-lg w-full p-6 sm:p-8 animate-scale-in">
-      onClick={(e) => e.stopPropagation()}
+      <div 
+        className="relative bg-white rounded-3xl shadow-2xl max-w-lg w-full p-6 sm:p-8 animate-scale-in">
+        onClick={(e) => e.stopPropagation()}
+      >
         {/* Кнопка закрытия */}
         <button
           onClick={onClose}
