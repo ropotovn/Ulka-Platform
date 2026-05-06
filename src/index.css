@@ -116,3 +116,8 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #a1a1a1;
 }
+
+html,
+body {
+  overflow-x: hidden;
+}
