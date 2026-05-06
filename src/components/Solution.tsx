@@ -34,7 +34,7 @@ export function Solution() {
             <div className="relative bg-white rounded-3xl p-8 shadow-xl border border-gray-100">
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 overflow-hidden">
                 <div className="text-center">
-                  <div className="flex flex-col sm:flex-row items-center justify-center gap-6 overflow-hidden">
+                  <div className="w-20 h-20 mx-auto mb-3 rounded-2xl bg-[#5BC0EB]/10 flex items-center justify-center">
                     <Search className="w-8 h-8 text-[#5BC0EB]" />
                   </div>
                   <p className="text-sm font-medium text-gray-700">Анализируют</p>
