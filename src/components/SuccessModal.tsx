@@ -22,6 +22,7 @@ export function SuccessModal({ isOpen, onClose, customerName }: SuccessModalProp
         {/* Кнопка закрытия */}
         <button
           onClick={onClose}
+          type="button"
           className="absolute top-4 right-4 w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-colors"
         >
           <X className="w-5 h-5 text-gray-500" />
@@ -70,6 +71,7 @@ export function SuccessModal({ isOpen, onClose, customerName }: SuccessModalProp
         {/* Кнопка закрытия */}
         <button
           onClick={onClose}
+          type="button"
           className="w-full mt-6 py-4 rounded-xl bg-gradient-to-r from-[#5BC0EB] to-[#FF6B9A] text-white font-bold text-lg shadow-lg shadow-[#5BC0EB]/25 hover:shadow-xl hover:shadow-[#5BC0EB]/30 transition-all hover:-translate-y-0.5"
         >
           Отлично!
