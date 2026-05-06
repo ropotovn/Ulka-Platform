@@ -32,21 +32,21 @@ export function Solution() {
           <div className="relative">
             <div className="absolute inset-0 bg-gradient-to-r from-[#5BC0EB]/20 to-[#FF6B9A]/20 rounded-3xl blur-2xl" />
             <div className="relative bg-white rounded-3xl p-8 shadow-xl border border-gray-100">
-              <div className="flex items-center justify-center gap-8">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 overflow-hidden">
                 <div className="text-center">
                   <div className="flex flex-col sm:flex-row items-center justify-center gap-6 overflow-hidden">
                     <Search className="w-8 h-8 text-[#5BC0EB]" />
                   </div>
                   <p className="text-sm font-medium text-gray-700">Анализируют</p>
                 </div>
-                <div className="text-2xl text-gray-300">→</div>
+                <div className="hidden sm:block text-2xl text-gray-300">→</div>
                 <div className="text-center">
                   <div className="w-20 h-20 mx-auto mb-3 rounded-2xl bg-[#FF6B9A]/10 flex items-center justify-center">
                     <MessageSquareMore className="w-8 h-8 text-[#FF6B9A]" />
                   </div>
                   <p className="text-sm font-medium text-gray-700">Обсуждают</p>
                 </div>
-                <div className="text-2xl text-gray-300">→</div>
+                <div className="hidden sm:block text-2xl text-gray-300">→</div>
                 <div className="text-center">
                   <div className="w-20 h-20 mx-auto mb-3 rounded-2xl bg-[#3ED598]/10 flex items-center justify-center">
                     <CheckCircle2 className="w-8 h-8 text-[#3ED598]" />
