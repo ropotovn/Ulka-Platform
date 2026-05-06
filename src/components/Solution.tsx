@@ -4,19 +4,19 @@ import { Mascot } from './Mascot';
 export function Solution() {
   return (
     <section className="py-24 bg-gradient-to-b from-white to-blue-50/30 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 overflow-hidden">
         <div className="grid lg:grid-cols-2 gap-12 items-center overflow-hidden">
-          <div>
+          <div className="min-w-0">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-6 leading-tight">
               ULKA Platform развивает мышление через игру.
             </h2>
-            <p className="text-lg text-gray-600 leading-relaxed mb-4">
+            <p className="text-lg text-gray-600 leading-relaxed mb-4 break-words">
               На платформе дети проходят игровые интеллектуальные миссии, где им нужно анализировать, обсуждать и принимать решения вместе.
             </p>
-            <p className="text-sm text-gray-500 leading-relaxed mb-6 max-w-xl">
+            <p className="text-sm text-gray-500 leading-relaxed mb-6 max-w-xl break-words">
               Ребёнка нельзя по-настоящему понять через тесты. Его качества становятся видны в действии — в выборе, диалоге и командной игре.
             </p>
-            <div className="flex flex-col sm:flex-row items-start gap-4 p-5 rounded-2xl bg-gradient-to-r from-[#3ED598]/8 to-[#5BC0EB]/8 border border-[#3ED598]/15 overflow-hidden">
+            <div className="flex flex-col sm:flex-row items-start gap-4 p-5 rounded-2xl bg-gradient-to-r from-[#3ED598]/8 to-[#5BC0EB]/8 border border-[#3ED598]/15 overflow-hidden min-w-0">
               <div className="flex-shrink-0 mt-0.5">
                 <Mascot size="md" emotion="curious" accessory="glasses" pose="tilt" className="animate-float" />
               </div>
