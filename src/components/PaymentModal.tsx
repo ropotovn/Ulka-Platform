@@ -1,5 +1,5 @@
-import { X, Copy, CheckCircle } from 'lucide-react';
-import { useState } from 'react';
+import { X, CheckCircle } from 'lucide-react';
+
 
 interface PaymentModalProps {
   isOpen: boolean;
@@ -9,18 +9,7 @@ interface PaymentModalProps {
 }
 
 export function PaymentModal({ isOpen, onClose, onPaymentComplete, customerData }: PaymentModalProps) {
-  const [copied, setCopied] = useState(false);
 
-  if (!isOpen) return null;
-
-  const contractNumber = '5131892696';
-  const recipientName = 'Осипенко Анастасия Максимовна';
-
-  const handleCopyContract = () => {
-    navigator.clipboard.writeText(contractNumber);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
 
   const handlePaymentConfirmed = () => {
     onPaymentComplete();
@@ -80,30 +69,7 @@ export function PaymentModal({ isOpen, onClose, onPaymentComplete, customerData 
           </div>
         </div>
 
-        {/* Данные получателя */}
-        <div className="rounded-2xl bg-gradient-to-r from-[#5BC0EB]/10 to-[#FF6B9A]/10 p-4 mb-6">
-          <p className="text-sm font-semibold text-gray-700 mb-2">Получатель:</p>
-          <p className="text-gray-900 font-medium mb-1">{recipientName}</p>
-          <div className="flex items-center justify-between">
-            <p className="text-gray-600 text-sm">Номер договора: <span className="font-mono font-semibold text-gray-900">{contractNumber}</span></p>
-            <button
-              onClick={handleCopyContract}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white hover:bg-gray-50 transition-colors"
-            >
-              {copied ? (
-                <>
-                  <CheckCircle className="w-4 h-4 text-[#3ED598]" />
-                  <span className="text-xs font-semibold text-[#3ED598]">Скопировано</span>
-                </>
-              ) : (
-                <>
-                  <Copy className="w-4 h-4 text-gray-500" />
-                  <span className="text-xs font-semibold text-gray-600">Копировать</span>
-                </>
-              )}
-            </button>
-          </div>
-        </div>
+     
 
         {/* Инструкция */}
         <div className="text-center mb-6">
