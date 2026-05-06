@@ -3,9 +3,9 @@ import { Mascot } from './Mascot';
 
 export function Solution() {
   return (
-    <section className="py-24 bg-gradient-to-b from-white to-blue-50/30">
+    <section className="py-24 bg-gradient-to-b from-white to-blue-50/30 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-12 items-center overflow-hidden">
           <div>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-6 leading-tight">
               ULKA Platform развивает мышление через игру.
@@ -56,9 +56,9 @@ export function Solution() {
               </div>
               
               <div className="mt-8 pt-6 border-t border-gray-100">
-                <div className="flex items-center justify-between">
+                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:justify-between">
                   <span className="text-gray-500 text-sm">Результат</span>
-                  <span className="text-[#3ED598] font-semibold">Развитые навыки мышления</span>
+                  <span className="text-[#3ED598] font-semibold break-words">Развитые навыки мышления</span>
                 </div>
               </div>
             </div>
