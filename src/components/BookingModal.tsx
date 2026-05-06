@@ -62,6 +62,7 @@ export function BookingModal({ isOpen, onClose, onSuccess }: BookingModalProps) 
       <div className="relative bg-white rounded-3xl shadow-2xl max-w-md w-full p-6 sm:p-8 animate-scale-in">
         {/* Кнопка закрытия */}
         <button
+          type="button"
           onClick={onClose}
           className="absolute top-4 right-4 w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-colors"
         >
