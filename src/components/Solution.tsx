@@ -16,12 +16,12 @@ export function Solution() {
             <p className="text-sm text-gray-500 leading-relaxed mb-6 max-w-xl">
               Ребёнка нельзя по-настоящему понять через тесты. Его качества становятся видны в действии — в выборе, диалоге и командной игре.
             </p>
-            <div className="flex items-start gap-4 p-5 rounded-2xl bg-gradient-to-r from-[#3ED598]/8 to-[#5BC0EB]/8 border border-[#3ED598]/15">
+            <div className="flex flex-col sm:flex-row items-start gap-4 p-5 rounded-2xl bg-gradient-to-r from-[#3ED598]/8 to-[#5BC0EB]/8 border border-[#3ED598]/15 overflow-hidden">
               <div className="flex-shrink-0 mt-0.5">
                 <Mascot size="md" emotion="curious" accessory="glasses" pose="tilt" className="animate-float" />
               </div>
-              <div>
-                <p className="text-gray-900 font-semibold mb-1">Жираф — проводник по миссиям</p>
+              <div className="flex-1 min-w-0">
+                <p className="text-gray-900 font-semibold mb-1 break-words">Жираф — проводник по миссиям</p>
                 <p className="text-sm text-gray-600 leading-relaxed">
                   Он помогает ребёнку включиться в игру, замечает сильные проявления и превращает опыт в понятную обратную связь.
                 </p>
@@ -34,7 +34,7 @@ export function Solution() {
             <div className="relative bg-white rounded-3xl p-8 shadow-xl border border-gray-100">
               <div className="flex items-center justify-center gap-8">
                 <div className="text-center">
-                  <div className="w-20 h-20 mx-auto mb-3 rounded-2xl bg-[#5BC0EB]/10 flex items-center justify-center">
+                  <div className="flex flex-col sm:flex-row items-center justify-center gap-6 overflow-hidden">
                     <Search className="w-8 h-8 text-[#5BC0EB]" />
                   </div>
                   <p className="text-sm font-medium text-gray-700">Анализируют</p>
