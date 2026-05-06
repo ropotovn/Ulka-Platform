@@ -94,7 +94,7 @@ export function TrialMission() {
           </div>
 
           <div className="relative flex items-center justify-center">
-            <div className="absolute inset-0 bg-gradient-to-r from-[#5BC0EB]/10 to-[#FF6B9A]/10 rounded-3xl blur-3xl" />
+            <div className="absolute inset-2 bg-gradient-to-r from-[#5BC0EB]/10 to-[#FF6B9A]/10 rounded-3xl blur-2xl" />
             
             <div className="relative bg-white rounded-3xl p-6 sm:p-8 shadow-xl border border-gray-100 max-w-md w-full">
               <div className="text-center mb-5">
