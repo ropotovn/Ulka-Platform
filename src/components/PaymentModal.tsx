@@ -28,9 +28,10 @@ export function PaymentModal({ isOpen, onClose, onPaymentComplete, customerData 
         {/* Кнопка закрытия */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-colors"
+          type="button"
+          className="absolute top-4 right-4 z-50 w-10 h-10 rounded-full bg-white shadow-md hover:bg-gray-100 flex items-center justify-center transition-colors"
         >
-          <X className="w-5 h-5 text-gray-500" />
+          <X className="w-5 h-5 text-gray-500 pointer-events-none" />
         </button>
 
         {/* Заголовок */}
