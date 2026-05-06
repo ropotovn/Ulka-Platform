@@ -140,7 +140,7 @@ export function TrialMission() {
                 </span>
               </button>
 
-              <div className="absolute -top-6 -right-6">
+              <div className="hidden sm:block absolute -top-6 -right-6">
                 <Mascot size="md" emotion="happy" accessory={["headphones", "medal"]} pose="wave" className="animate-bounce-slow" />
               </div>
             </div>
