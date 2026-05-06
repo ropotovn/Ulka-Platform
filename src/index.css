@@ -118,6 +118,7 @@ body {
 }
 
 html,
-body {
+body,
+#root {
   overflow-x: hidden;
 }
