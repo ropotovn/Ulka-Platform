@@ -10,7 +10,7 @@ interface PaymentModalProps {
 
 export function PaymentModal({ isOpen, onClose, onPaymentComplete, customerData }: PaymentModalProps) {
 
-
+  if (!isOpen) return null;
   const handlePaymentConfirmed = () => {
     onPaymentComplete();
   };
