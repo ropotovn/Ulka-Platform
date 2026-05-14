@@ -49,39 +49,29 @@ const handleSubmit = async (e: React.FormEvent) => {
   addCustomer(customer);
 
     // отправка в Google Sheets
-  try {
+ try {
 
-    console.log(customer);
+  const url = new URL(
+    "https://script.google.com/macros/s/AKfycbzX0g17JgHDWIn6tY0N0rvEJDkUMPmlfwdy7DeiaGIj7cq7pLEGA6OWNO3udhgDujOc/exec"
+  );
 
-    const formData = new FormData();
+  url.searchParams.append("name", customer.name);
+  url.searchParams.append("email", customer.email);
+  url.searchParams.append("childAge", String(customer.childAge));
+  url.searchParams.append("amount", String(customer.amount));
 
-    formData.append("name", customer.name);
-    formData.append("email", customer.email);
-    formData.append("childAge", String(customer.childAge));
-    formData.append("amount", String(customer.amount));
-
-    await fetch(
-      "https://script.google.com/macros/s/AKfycbzX0g17JgHDWIn6tY0N0rvEJDkUMPmlfwdy7DeiaGIj7cq7pLEGA6OWNO3udhgDujOc/exec",
-      {
-        method: "POST",
-        body: formData,
-      }
-    );
-
-    console.log("Данные отправлены");
-
-  } catch (error) {
-
-    console.error("Ошибка отправки:", error);
-
-  }
-
-  onSuccess({
-    name,
-    email,
-    childAge,
+  await fetch(url.toString(), {
+    method: "POST",
+    mode: "no-cors",
   });
-};
+
+  console.log("Данные отправлены");
+
+} catch (error) {
+
+  console.error("Ошибка отправки:", error);
+
+}
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
