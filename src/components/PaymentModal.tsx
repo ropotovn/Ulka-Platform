@@ -73,7 +73,15 @@ export function PaymentModal({ isOpen, onClose, onPaymentComplete, customerData 
           </div>
         </div>
 
-     
+       {/* Кнопка оплаты */}
+  <a
+    href="https://yoomoney.ru/bill/pay/1H89IBMH0MF.260419"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="w-full mb-6 flex items-center justify-center py-4 rounded-xl bg-gradient-to-r from-[#FF6B9A] to-[#5BC0EB] text-white font-bold text-lg shadow-lg hover:shadow-xl transition-all hover:-translate-y-0.5"
+>
+  Оплатить 990 ₽
+</a>
 
         {/* Инструкция */}
         <div className="text-center mb-6">
