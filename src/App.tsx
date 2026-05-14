@@ -13,6 +13,25 @@ import { FinalCTA } from './components/FinalCTA';
 import { Navigation } from './components/Navigation';
 
 function App() {
+  useEffect(() => {
+// --- VK реклама ---
+  window._tmr = window._tmr || [];
+
+  window._tmr.push({
+    id: "3766213",
+    type: "pageView",
+    start: new Date().getTime(),
+  });
+
+  const script = document.createElement("script");
+
+  script.src = "https://top-fwz1.mail.ru/js/code.js";
+  script.async = true;
+  script.id = "tmr-code";
+
+  document.head.appendChild(script);
+
+}, []);
 
   useEffect(() => {
     // --- Яндекс Метрика ---
