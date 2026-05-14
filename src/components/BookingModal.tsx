@@ -48,17 +48,32 @@ const handleSubmit = async (e: React.FormEvent) => {
   // локальное сохранение
   addCustomer(customer);
 
-  // отправка в Google Sheets
+    // отправка в Google Sheets
   try {
+
     console.log(customer);
-    await fetch("https://script.google.com/macros/s/AKfycbzX0g17JgHDWIn6tY0N0rvEJDkUMPmlfwdy7DeiaGIj7cq7pLEGA6OWNO3udhgDujOc/exec", {
-      method: "POST",
-      body: JSON.stringify(customer),
-    });
+
+    const formData = new FormData();
+
+    formData.append("name", customer.name);
+    formData.append("email", customer.email);
+    formData.append("childAge", String(customer.childAge));
+    formData.append("amount", String(customer.amount));
+
+    await fetch(
+      "https://script.google.com/macros/s/AKfycbzX0g17JgHDWIn6tY0N0rvEJDkUMPmlfwdy7DeiaGIj7cq7pLEGA6OWNO3udhgDujOc/exec",
+      {
+        method: "POST",
+        body: formData,
+      }
+    );
 
     console.log("Данные отправлены");
+
   } catch (error) {
+
     console.error("Ошибка отправки:", error);
+
   }
 
   onSuccess({
@@ -67,7 +82,6 @@ const handleSubmit = async (e: React.FormEvent) => {
     childAge,
   });
 };
-
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
