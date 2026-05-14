@@ -50,7 +50,7 @@ const handleSubmit = async (e: React.FormEvent) => {
 
   // отправка в Google Sheets
   try {
-    await fetch("https://script.google.com/macros/s/AKfycbzX0g17JgHDWIn6tY0N0rvEJDkUMPmlfwdy7DeiaGIj7cq7pLEGA6OWNO3udhgDujOc/exe", {
+    await fetch("https://script.google.com/macros/s/AKfycbzX0g17JgHDWIn6tY0N0rvEJDkUMPmlfwdy7DeiaGIj7cq7pLEGA6OWNO3udhgDujOc/exec", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
