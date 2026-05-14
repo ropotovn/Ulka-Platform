@@ -33,18 +33,42 @@ export function BookingModal({ isOpen, onClose, onSuccess }: BookingModalProps) 
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    if (!validateForm()) return;
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
 
-    // Сохраняем данные клиента
-    const customer = addCustomer({
-      name: name.trim(),
-      email: email.trim(),
-      childAge,
-      amount: 990,
+  if (!validateForm()) return;
+
+  const customer = {
+    name: name.trim(),
+    email: email.trim(),
+    childAge,
+    amount: 990,
+  };
+
+  // локальное сохранение
+  addCustomer(customer);
+
+  // отправка в Google Sheets
+  try {
+    await fetch("https://script.google.com/macros/s/AKfycbzX0g17JgHDWIn6tY0N0rvEJDkUMPmlfwdy7DeiaGIj7cq7pLEGA6OWNO3udhgDujOc/exe", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(customer),
     });
+
+    console.log("Данные отправлены");
+  } catch (error) {
+    console.error("Ошибка отправки:", error);
+  }
+
+  onSuccess({
+    name,
+    email,
+    childAge,
+  });
+};
 
     console.log('Бронирование создано:', customer);
     onSuccess({ name, email, childAge });
