@@ -68,7 +68,7 @@ export function PaymentModal({ isOpen, onClose, onPaymentComplete, customerData 
             <img 
               src="/images/qr-payment.png" 
               alt="QR код для оплаты"
-              className="w-64 h-64 object-contain"
+              className="w-52 h-52 sm:w-64 sm:h-64 object-contain"
             />
           </div>
         </div>
@@ -86,14 +86,14 @@ export function PaymentModal({ isOpen, onClose, onPaymentComplete, customerData 
         {/* Инструкция */}
         <div className="text-center mb-6">
           <p className="text-gray-600 text-sm leading-relaxed">
-            После оплаты нажмите кнопку ниже для подтверждения
+            После успешной оплаты вернитесь и подтвердите её кнопкой ниже
           </p>
         </div>
 
         {/* Кнопка подтверждения */}
         <button
           onClick={handlePaymentConfirmed}
-          className="w-full py-4 rounded-xl bg-gradient-to-r from-[#3ED598] to-[#5BC0EB] text-white font-bold text-lg shadow-lg shadow-[#3ED598]/25 hover:shadow-xl hover:shadow-[#3ED598]/30 transition-all hover:-translate-y-0.5"
+          className="w-full py-4 rounded-xl bg-gradient-to-r from-gray-400 to-gray-500 text-white font-bold text-lg shadow-lg shadow-[#3ED598]/25 hover:shadow-xl hover:shadow-[#3ED598]/30 transition-all hover:-translate-y-0.5"
         >
           Я оплатил(а)
         </button>
