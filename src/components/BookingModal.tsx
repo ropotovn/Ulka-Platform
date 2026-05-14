@@ -13,6 +13,7 @@ export function BookingModal({ isOpen, onClose, onSuccess }: BookingModalProps) 
   const [email, setEmail] = useState('');
   const [childAge, setChildAge] = useState(8);
   const [errors, setErrors] = useState<{ name?: string; email?: string }>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   if (!isOpen) return null;
 
