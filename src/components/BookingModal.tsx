@@ -53,10 +53,6 @@ const handleSubmit = async (e: React.FormEvent) => {
     console.log(customer);
     await fetch("https://script.google.com/macros/s/AKfycbzX0g17JgHDWIn6tY0N0rvEJDkUMPmlfwdy7DeiaGIj7cq7pLEGA6OWNO3udhgDujOc/exec", {
       method: "POST",
-      mode: "no-cors",
-      headers: {
-        "Content-Type": "application/json",
-      },
       body: JSON.stringify(customer),
     });
 
