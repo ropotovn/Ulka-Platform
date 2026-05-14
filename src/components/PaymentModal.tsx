@@ -43,7 +43,7 @@ export function PaymentModal({ isOpen, onClose, onPaymentComplete, customerData 
             <CheckCircle className="w-8 h-8 text-white" />
           </div>
           <h3 className="text-2xl font-bold text-gray-900 mb-2">Оплата пробной миссии</h3>
-          <p className="text-gray-600">Отсканируйте QR-код для оплаты</p>
+          <p className="text-gray-600">Отсканируйте QR-код или нажмите кнопку ниже</p>
         </div>
 
         {/* Информация о заказе */}
