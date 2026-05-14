@@ -70,9 +70,6 @@ const handleSubmit = async (e: React.FormEvent) => {
   });
 };
 
-    console.log('Бронирование создано:', customer);
-    onSuccess({ name, email, childAge });
-  };
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
