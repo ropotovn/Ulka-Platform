@@ -51,19 +51,20 @@ const handleSubmit = async (e: React.FormEvent) => {
     // отправка в Google Sheets
  try {
 
-  const url = new URL(
-    "https://script.google.com/macros/s/AKfycbzX0g17JgHDWIn6tY0N0rvEJDkUMPmlfwdy7DeiaGIj7cq7pLEGA6OWNO3udhgDujOc/exec"
-  );
-
-  url.searchParams.append("name", customer.name);
-  url.searchParams.append("email", customer.email);
-  url.searchParams.append("childAge", String(customer.childAge));
-  url.searchParams.append("amount", String(customer.amount));
-
-  await fetch(url.toString(), {
-    method: "POST",
-    mode: "no-cors",
+  const params = new URLSearchParams({
+    name: customer.name,
+    email: customer.email,
+    childAge: String(customer.childAge),
+    amount: String(customer.amount),
   });
+
+  await fetch(
+    "https://script.google.com/macros/s/AKfycbzX0g17JgHDWIn6tY0N0rvEJDkUMPmlfwdy7DeiaGIj7cq7pLEGA6OWNO3udhgDujOc/exec",
+    {
+      method: "POST",
+      body: params,
+    }
+  );
 
   console.log("Данные отправлены");
 
@@ -72,7 +73,6 @@ const handleSubmit = async (e: React.FormEvent) => {
   console.error("Ошибка отправки:", error);
 
 }
-
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
       {/* Затемнение фона */}
