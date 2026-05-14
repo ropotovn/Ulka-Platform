@@ -36,6 +36,11 @@ export function BookingModal({ isOpen, onClose, onSuccess }: BookingModalProps) 
 
 const handleSubmit = async (e: React.FormEvent) => {
   e.preventDefault();
+  
+
+  if (isSubmitting) return;
+
+  setIsSubmitting(true);
 
   if (!validateForm()) return;
 
@@ -72,8 +77,21 @@ const handleSubmit = async (e: React.FormEvent) => {
 } catch (error) {
 
   console.error("Ошибка отправки:", error);
-
+  setIsSubmitting(false);
 }
+  setIsSubmitting(false);
+
+onSuccess({
+
+  name,
+
+  email,
+
+  childAge,
+
+});
+
+};
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
       {/* Затемнение фона */}
@@ -181,9 +199,12 @@ const handleSubmit = async (e: React.FormEvent) => {
           {/* Кнопка отправки */}
           <button
             type="submit"
-            className="w-full py-4 rounded-xl bg-gradient-to-r from-[#5BC0EB] to-[#FF6B9A] text-white font-bold text-lg shadow-lg shadow-[#5BC0EB]/25 hover:shadow-xl hover:shadow-[#5BC0EB]/30 transition-all hover:-translate-y-0.5"
+            disabled={isSubmitting}
+            className={`w-full py-4 rounded-xl bg-gradient-to-r from-[#5BC0EB] to-[#FF6B9A] text-white font-bold text-lg shadow-lg shadow-[#5BC0EB]/25 transition-all
+${isSubmitting ? 'opacity-50 cursor-not-allowed' : 'hover:shadow-xl hover:shadow-[#5BC0EB]/30 hover:-translate-y-0.5'}
+`}
           >
-            Перейти к оплате
+            {isSubmitting ? "Загрузка..." : "Перейти к оплате"}
           </button>
 
           <p className="text-center text-xs text-gray-500">
