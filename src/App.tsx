@@ -85,7 +85,7 @@ function App() {
         <Hero />
         <ParentsAudience />
         {/* <Problem /> */}
-        <Solution />
+        {/* <Solution /> */}
         <DashboardV2 />
         <FinalCTA />
         {/* <HowItWorks /> */}
