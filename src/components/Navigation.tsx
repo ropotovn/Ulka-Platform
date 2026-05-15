@@ -4,8 +4,9 @@ import { Menu, X } from 'lucide-react';
 const navLinks = [
   {/* label: 'О платформе', href: '#about'*/ },
   { /*label: 'Как работает', href: '#how-it-works'*/ },
-  { label: 'Преимущества', href: '#benefits' },
   { label: 'Дашборд', href: '#dashboard' },
+  { label: 'Преимущества', href: '#benefits' },
+  
 ];
 
 export function Navigation() {
