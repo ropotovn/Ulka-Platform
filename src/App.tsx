@@ -85,10 +85,10 @@ function App() {
         <ParentsAudience />
         {/* <Problem /> */}
         <Solution />
-        <DashboardV2 />
         <FinalCTA />
         {/* <HowItWorks /> */}
         {/* <ParentsValue /> */}
+        <DashboardV2 />
         <KidsValue />
         <Benefits />
         <TrialMission />
