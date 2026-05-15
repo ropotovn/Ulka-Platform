@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 
 const navLinks = [
-  { label: 'О платформе', href: '#about' },
-  { label: 'Как работает', href: '#how-it-works' },
+  {/* label: 'О платформе', href: '#about'*/ },
+  { /*label: 'Как работает', href: '#how-it-works'*/ },
   { label: 'Преимущества', href: '#benefits' },
   { label: 'Дашборд', href: '#dashboard' },
 ];
