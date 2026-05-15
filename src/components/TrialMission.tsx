@@ -117,7 +117,7 @@ export function TrialMission() {
                 <div className="flex justify-between items-end py-2">
                   <span className="text-gray-600">Стоимость</span>
                   <div className="text-right">
-                    <div className="text-sm text-gray-400 line-through">1490 ₽</div>
+                    <div className="text-sm text-gray-400 line-through">2490 ₽</div>
                     <div className="font-extrabold text-3xl text-[#FF6B9A] leading-none">990 ₽</div>
                   </div>
                 </div>
