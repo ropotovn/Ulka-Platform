@@ -83,11 +83,11 @@ function App() {
       <main>
         <Hero />
         <ParentsAudience />
-        <Problem />
+        {/* <Problem /> */}
         <Solution />
         <FinalCTA />
-        <HowItWorks />
-        <ParentsValue />
+        {/* <HowItWorks /> */}
+        {/* <ParentsValue /> */}
         <DashboardV2 />
         <KidsValue />
         <Benefits />
