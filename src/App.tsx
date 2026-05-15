@@ -79,7 +79,7 @@ function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-white font-sans">
+    <div className="min-h-screen bg-white dark:bg-black font-sans dark:text-white transition-colors">
       <Navigation />
       <main>
         <Hero />
