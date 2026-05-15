@@ -11,6 +11,7 @@ import { KidsValue } from './components/KidsValue';
 import { TrialMission } from './components/TrialMission';
 import { FinalCTA } from './components/FinalCTA';
 import { Navigation } from './components/Navigation';
+import { SpeedInsights } from "@vercel/speed-insights/react";
 
 function App() {
   useEffect(() => {
@@ -85,10 +86,10 @@ function App() {
         <ParentsAudience />
         {/* <Problem /> */}
         <Solution />
+        <DashboardV2 />
         <FinalCTA />
         {/* <HowItWorks /> */}
         {/* <ParentsValue /> */}
-        <DashboardV2 />
         <KidsValue />
         <Benefits />
         <TrialMission />
