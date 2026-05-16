@@ -101,6 +101,7 @@ function App() {
           </p>
         </div>
       </footer>
+      <SpeedInsights />
     </div>
   );
 }
