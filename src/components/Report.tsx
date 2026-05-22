@@ -1,23 +1,7 @@
 // =============================================
 // REPORT — секция с примером ИИ-отчёта. Правь REPORT_EXAMPLE и FEATURES.
 // =============================================
-const FEATURES = [
-  {
-    icon: "🔍",
-    title: "Анализ действий, а не результата",
-    desc: "Смотрим, как ребёнок принимает решения, а не что получилось.",
-  },
-  {
-    icon: "🧠",
-    title: "Рекомендации от метаспециалистов",
-    desc: "Каждый отчёт опирается на практику детских психологов.",
-  },
-  {
-    icon: "🎯",
-    title: "Где интерес — туда направляем",
-    desc: "Подсказываем, какие миссии дадут максимум роста.",
-  },
-];
+
 
 
 const REPORT_EXAMPLE = {
@@ -67,15 +51,7 @@ export default function Report() {
         </div>
 
         {/* Фичи */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5 mb-12">
-          {FEATURES.map((f) => (
-            <div key={f.title} className="p-6 rounded-[24px] bg-[var(--color-cream)] border border-black/5">
-              <div className="text-3xl mb-3">{f.icon}</div>
-              <div className="font-display font-semibold text-lg">{f.title}</div>
-              <div className="mt-2 text-sm text-[var(--color-ink-soft)] leading-relaxed">{f.desc}</div>
-            </div>
-          ))}
-        </div>
+ 
 
         {/* Пример отчёта */}
         <div className="relative rounded-[32px] bg-gradient-to-br from-[var(--color-cream)] to-[var(--color-cream-dark)] border border-black/5 p-6 md:p-10 overflow-hidden">
