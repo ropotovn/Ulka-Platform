@@ -53,7 +53,7 @@ export default function Report() {
  
 
         {/* Пример отчёта */}
-        <div className="relative rounded-[32px] bg-gradient-to-br from-[var(--color-cream)] to-[var(--color-cream-dark)] border border-black/5 p-6 md:p-8 overflow-hidden">
+        <div className="relative rounded-[32px] bg-gradient-to-br from-[var(--color-cream)] to-[var(--color-cream-dark)] border border-black/5 p-6 md:p-6 overflow-hidden">
           <div className="cloud bg-[var(--color-lavender)] w-[300px] h-[300px] -top-20 -right-20 opacity-40" />
           <div className="cloud bg-[var(--color-sky)] w-[200px] h-[200px] bottom-0 -left-10 opacity-40" />
 
