@@ -57,8 +57,7 @@ export default function Report() {
             Что получают родители
           </div>
           <h2 className="font-display font-bold text-[36px] md:text-[56px] leading-[1.05] tracking-tight">
-            Персональный отчёт<br className="hidden md:block" />
-            под капотом игры
+            Найдем и поддержим суперсилы<br className="hidden md:block" />
           </h2>
           <p className="mt-5 text-lg text-[var(--color-ink-soft)]">
             После каждой миссии вы видите, что{" "}
