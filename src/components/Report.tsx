@@ -27,8 +27,7 @@ const REPORT_EXAMPLE = {
       text: "Слушала идеи других, два раза уступила своей идеей в пользу более сильной. Помогла Соне сформулировать её мысль.",
     },
   ],
-  recommendation:
-    "Марии откликаются роли с ответственностью за группу. Следующую миссию советуем — «Запуск школьного радио»: даст пространство для лидерства и проверит навык делегирования.",
+  
 };
 
 export default function Report() {
@@ -54,7 +53,7 @@ export default function Report() {
  
 
         {/* Пример отчёта */}
-        <div className="relative rounded-[32px] bg-gradient-to-br from-[var(--color-cream)] to-[var(--color-cream-dark)] border border-black/5 p-6 md:p-10 overflow-hidden">
+        <div className="relative rounded-[32px] bg-gradient-to-br from-[var(--color-cream)] to-[var(--color-cream-dark)] border border-black/5 p-6 md:p-8 overflow-hidden">
           <div className="cloud bg-[var(--color-lavender)] w-[300px] h-[300px] -top-20 -right-20 opacity-40" />
           <div className="cloud bg-[var(--color-sky)] w-[200px] h-[200px] bottom-0 -left-10 opacity-40" />
 
@@ -101,22 +100,7 @@ export default function Report() {
               ))}
             </div>
 
-            {/* Рекомендация */}
-            <div className="bg-[var(--color-ink)] text-white rounded-[24px] p-5 md:p-6">
-              <div className="flex items-center gap-2 mb-3">
-                <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-[var(--color-lavender)] text-[var(--color-ink)]">
-                  <svg viewBox="0 0 24 24" className="w-4 h-4" fill="currentColor">
-                    <path d="M12 2l2.39 7.36H22l-6.18 4.49 2.36 7.27L12 16.63 5.82 21.12l2.36-7.27L2 9.36h7.61z" />
-                  </svg>
-                </span>
-                <span className="text-xs font-semibold uppercase tracking-wider text-white/70">
-                  Рекомендация ИИ-наставника
-                </span>
-              </div>
-              <p className="text-white/90 leading-relaxed">
-                {REPORT_EXAMPLE.recommendation}
-              </p>
-            </div>
+
           </div>
         </div>
       </div>
