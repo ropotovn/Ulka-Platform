@@ -52,7 +52,7 @@ export default function Report() {
     <section id="report" className="relative py-20 md:py-28 bg-white">
       <div className="max-w-7xl mx-auto px-5 md:px-8">
         {/* Заголовок */}
-        <div className="max-w-2xl mb-12 md:mb-16">
+        <div className="mb-12 md:mb-16">
           <div className="text-sm font-semibold text-[var(--color-muted)] uppercase tracking-wider mb-3">
             Что получают родители
           </div>
