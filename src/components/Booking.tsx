@@ -1,8 +1,7 @@
 import { useState } from "react";
 
-
 // =============================================
-// BOOKING — форма записи. Правь STEPS (вопросы и варианты ответов).
+// BOOKING — форма записи
 // =============================================
 
 type Card = { value: string; desc: string };
@@ -69,7 +68,10 @@ export default function Booking() {
 
   const toggleOption = (opt: string) => {
     const cur = (answers[step] as string[]) || [];
-    const next = cur.includes(opt) ? cur.filter((x) => x !== opt) : [...cur, opt];
+    const next = cur.includes(opt)
+      ? cur.filter((x) => x !== opt)
+      : [...cur, opt];
+
     setAnswers({ ...answers, [step]: next });
   };
 
@@ -83,57 +85,81 @@ export default function Booking() {
 
   const canNext = () => {
     const a = answers[step];
+
     if (!a) return false;
+
     if (Array.isArray(a)) return a.length > 0;
-    if (typeof a === "string") return a.trim().length > 0;
+
+    if (typeof a === "string") {
+      return a.trim().length > 0;
+    }
+
     return false;
   };
-const submitForm = async () => {
-  if (isSubmitting) return;
 
-  setIsSubmitting(true);
+  const submitForm = async () => {
+    if (isSubmitting) return;
 
-  try {
-    console.log("SUBMIT START");
-      interests: Array.isArray(answers[0])
-        ? answers[0].join(", ")
-        : String(answers[0] || ""),
+    setIsSubmitting(true);
 
-      age: String(answers[1] || ""),
+    try {
+      console.log("SUBMIT START");
 
-      goals: Array.isArray(answers[2])
-        ? answers[2].join(", ")
-        : String(answers[2] || ""),
+      const params = new URLSearchParams({
+        interests: Array.isArray(answers[0])
+          ? answers[0].join(", ")
+          : String(answers[0] || ""),
 
-      contact: String(answers[3] || ""),
-    });
+        age: String(answers[1] || ""),
 
-    await fetch(
-      "https://script.google.com/macros/s/AKfycbzX0g17JgHDWIn6tY0N0rvEJDkUMPmlfwdy7DeiaGIj7cq7pLEGA6OWNO3udhgDujOc/exec",
-      {
-        method: "POST",
-        body: params,
+        goals: Array.isArray(answers[2])
+          ? answers[2].join(", ")
+          : String(answers[2] || ""),
+
+        contact: String(answers[3] || ""),
+      });
+
+      const response = await fetch(
+        "https://script.google.com/macros/s/AKfycbzX0g17JgHDWIn6tY0N0rvEJDkUMPmlfwdy7DeiaGIj7cq7pLEGA6OWNO3udhgDujOc/exec",
+        {
+          method: "POST",
+          body: params,
+        }
+      );
+
+      console.log("STATUS:", response.status);
+
+      const text = await response.text();
+
+      console.log("RESPONSE:", text);
+
+      if (response.ok) {
+        setSubmitted(true);
+      } else {
+        alert("Ошибка отправки формы");
       }
-    );
 
-    setSubmitted(true);
+    } catch (error) {
+      console.error("Ошибка отправки:", error);
+      alert("Ошибка отправки формы");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
-  } catch (error) {
-    console.error("Ошибка отправки:", error);
-    alert("Ошибка отправки формы");
-  } finally {
-    setIsSubmitting(false);
-  }
-};
-const next = async () => {
-  if (step < STEPS.length - 1) {
-    setStep(step + 1);
-  } else {
-    await submitForm();
-  }
-};
+  const next = async () => {
+    if (step < STEPS.length - 1) {
+      setStep(step + 1);
+    } else {
+      await submitForm();
+    }
+  };
 
-  const back = () => step > 0 && setStep(step - 1);
+  const back = () => {
+    if (step > 0) {
+      setStep(step - 1);
+    }
+  };
 
   const reset = () => {
     setStep(0);
@@ -142,58 +168,79 @@ const next = async () => {
   };
 
   return (
-    <section id="booking" className="relative py-20 md:py-28 bg-[var(--color-ink)] text-white overflow-hidden">
-      {/* Декоративные облака */}
+    <section
+      id="booking"
+      className="relative py-20 md:py-28 bg-[var(--color-ink)] text-white overflow-hidden"
+    >
       <div className="cloud bg-[var(--color-lavender)] w-[400px] h-[400px] -top-32 -left-32 opacity-30" />
       <div className="cloud bg-[var(--color-sky)] w-[400px] h-[400px] -bottom-32 -right-32 opacity-30" />
 
       <div className="relative max-w-3xl mx-auto px-5 md:px-8">
+
         {/* Заголовок */}
         <div className="text-center mb-10 md:mb-14">
           <div className="text-sm font-semibold text-white/60 uppercase tracking-wider mb-3">
             Запись на миссию
           </div>
+
           <h2 className="font-display font-bold text-[36px] md:text-[52px] leading-[1.05] tracking-tight">
-            Соберём миссию<br className="hidden md:block" />
+            Соберём миссию
+            <br className="hidden md:block" />
             под вашего ребёнка
           </h2>
+
           <p className="mt-5 text-lg text-white/70 max-w-xl mx-auto">
-            Четыре коротких вопроса — и место на первой миссии у вас. Без воды и шаблонов.
+            Четыре коротких вопроса — и место на первой миссии у вас.
           </p>
         </div>
 
-        {/* Карточка формы */}
+        {/* Карточка */}
         <div className="bg-white text-[var(--color-ink)] rounded-[32px] p-6 md:p-10 shadow-2xl">
+
           {submitted ? (
             <div className="text-center py-8">
+
               <div className="w-20 h-20 mx-auto rounded-full bg-[var(--color-mint)] flex items-center justify-center text-4xl mb-6">
                 ✓
               </div>
+
               <h3 className="font-display font-bold text-2xl md:text-3xl mb-3">
                 Заявка принята!
               </h3>
+
               <p className="text-[var(--color-ink-soft)] max-w-md mx-auto mb-8">
-                Мы свяжемся с вами в течение дня, чтобы подобрать миссию под ребёнка.
+                Мы свяжемся с вами в течение дня.
               </p>
+
               <button
                 onClick={reset}
-                className="px-6 py-3 rounded-full bg-[var(--color-ink)] text-white font-medium hover:bg-[var(--color-ink-soft)] transition"
+                className="px-6 py-3 rounded-full bg-[var(--color-ink)] text-white font-medium"
               >
                 Отправить ещё раз
               </button>
+
             </div>
           ) : (
             <>
               {/* Прогресс */}
               <div className="mb-8">
+
                 <div className="flex justify-between text-sm text-[var(--color-muted)] mb-3">
-                  <span>Шаг {step + 1} из {STEPS.length}</span>
-                  <span>{Math.round(((step + 1) / STEPS.length) * 100)}%</span>
+                  <span>
+                    Шаг {step + 1} из {STEPS.length}
+                  </span>
+
+                  <span>
+                    {Math.round(((step + 1) / STEPS.length) * 100)}%
+                  </span>
                 </div>
+
                 <div className="h-2 bg-black/5 rounded-full overflow-hidden">
                   <div
                     className="h-full bg-gradient-to-r from-[var(--color-sky)] to-[var(--color-mint)] transition-all duration-500"
-                    style={{ width: `${((step + 1) / STEPS.length) * 100}%` }}
+                    style={{
+                      width: `${((step + 1) / STEPS.length) * 100}%`,
+                    }}
                   />
                 </div>
               </div>
@@ -202,14 +249,26 @@ const next = async () => {
               <h3 className="font-display font-bold text-2xl md:text-3xl mb-1">
                 {current.question}
               </h3>
+
               {current.subtitle && (
-                <p className="text-[var(--color-muted)] mb-6">{current.subtitle}</p>
+                <p className="text-[var(--color-muted)] mb-6">
+                  {current.subtitle}
+                </p>
               )}
+
               {!current.subtitle && <div className="mb-6" />}
 
-              {/* Варианты */}
-              <div className={current.type === "cards" ? "mb-8" : "space-y-2.5 mb-8"}>
+              {/* Контент */}
+              <div
+                className={
+                  current.type === "cards"
+                    ? "mb-8"
+                    : "space-y-2.5 mb-8"
+                }
+              >
+
                 {current.type === "text" ? (
+
                   <textarea
                     value={(answers[step] as string) || ""}
                     onChange={(e) => setText(e.target.value)}
@@ -217,61 +276,90 @@ const next = async () => {
                     rows={4}
                     className="w-full p-4 rounded-2xl bg-[var(--color-cream)] border border-black/10 focus:border-[var(--color-ink)] focus:outline-none transition resize-none"
                   />
+
                 ) : current.type === "cards" ? (
+
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+
                     {current.cards?.map((c) => {
                       const selected = answers[step] === c.value;
+
                       return (
                         <button
                           key={c.value}
                           onClick={() => setSingle(c.value)}
                           className={`text-left p-5 rounded-2xl border-2 transition-all ${
                             selected
-                              ? "bg-gradient-to-br from-[var(--color-sky)]/25 to-[var(--color-mint)]/35 border-[var(--color-green)] shadow-[inset_0_0_0_1px_rgba(125,214,168,0.45)]"
+                              ? "bg-gradient-to-br from-[var(--color-sky)]/25 to-[var(--color-mint)]/35 border-[var(--color-green)]"
                               : "bg-white border-black/10 hover:border-black/20"
                           }`}
                         >
-                          <div className="font-display font-bold text-xl md:text-2xl text-[var(--color-ink)] tracking-tight">
+                          <div className="font-display font-bold text-xl md:text-2xl">
                             {c.value}
                           </div>
-                          <div className="mt-2 text-sm text-[var(--color-muted)] leading-snug">
+
+                          <div className="mt-2 text-sm text-[var(--color-muted)]">
                             {c.desc}
                           </div>
                         </button>
                       );
                     })}
+
                   </div>
+
                 ) : (
+
                   current.options?.map((opt) => {
-                    const selected = current.type === "multiple"
-                      ? ((answers[step] as string[]) || []).includes(opt)
-                      : answers[step] === opt;
+                    const selected =
+                      current.type === "multiple"
+                        ? ((answers[step] as string[]) || []).includes(opt)
+                        : answers[step] === opt;
+
                     return (
                       <button
                         key={opt}
-                        onClick={() => (current.type === "multiple" ? toggleOption(opt) : setSingle(opt))}
+                        onClick={() =>
+                          current.type === "multiple"
+                            ? toggleOption(opt)
+                            : setSingle(opt)
+                        }
                         className={`w-full text-left p-4 rounded-2xl border-2 transition-all ${
                           selected
-                            ? "bg-gradient-to-r from-[var(--color-sky)]/25 to-[var(--color-mint)]/35 border-[var(--color-green)] shadow-[inset_0_0_0_1px_rgba(125,214,168,0.45)]"
-                            : "bg-white border-black/10 hover:border-black/20 text-[var(--color-ink)]"
+                            ? "bg-gradient-to-r from-[var(--color-sky)]/25 to-[var(--color-mint)]/35 border-[var(--color-green)]"
+                            : "bg-white border-black/10 hover:border-black/20"
                         }`}
                       >
                         <span className="flex items-center justify-between">
                           <span>{opt}</span>
+
                           {selected && (
-                            <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="3">
-                              <path d="M5 12l5 5L20 7" strokeLinecap="round" strokeLinejoin="round" />
+                            <svg
+                              viewBox="0 0 24 24"
+                              className="w-5 h-5"
+                              fill="none"
+                              stroke="currentColor"
+                              strokeWidth="3"
+                            >
+                              <path
+                                d="M5 12l5 5L20 7"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                              />
                             </svg>
                           )}
+
                         </span>
                       </button>
                     );
                   })
+
                 )}
+
               </div>
 
-              {/* Навигация */}
+              {/* Кнопки */}
               <div className="flex items-center justify-between gap-3">
+
                 <button
                   onClick={back}
                   disabled={step === 0}
@@ -279,23 +367,38 @@ const next = async () => {
                 >
                   ← Назад
                 </button>
+
                 <button
                   onClick={next}
-                  disabled={false}
-                  className="px-7 py-3 rounded-full bg-[var(--color-ink)] text-white font-medium hover:bg-[var(--color-ink-soft)] disabled:opacity-40 disabled:cursor-not-allowed transition flex items-center gap-2"
+                  disabled={!canNext() || isSubmitting}
+                  className="px-7 py-3 rounded-full bg-[var(--color-ink)] text-white font-medium hover:bg-[var(--color-ink-soft)] disabled:opacity-40 transition flex items-center gap-2"
                 >
                   {isSubmitting
-  ? "Отправка..."
-  : step === STEPS.length - 1
-  ? "Отправить"
-  : "Дальше"}
-                  <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2.5">
-                    <path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
+                    ? "Отправка..."
+                    : step === STEPS.length - 1
+                    ? "Отправить"
+                    : "Дальше"}
+
+                  <svg
+                    viewBox="0 0 24 24"
+                    className="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
+                  >
+                    <path
+                      d="M5 12h14M13 6l6 6-6 6"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
                   </svg>
+
                 </button>
+
               </div>
             </>
           )}
+
         </div>
       </div>
     </section>
