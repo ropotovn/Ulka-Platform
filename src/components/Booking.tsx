@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+
 // =============================================
 // BOOKING — форма записи. Правь STEPS (вопросы и варианты ответов).
 // =============================================
@@ -62,6 +63,7 @@ export default function Booking() {
   const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState<Record<number, string | string[]>>({});
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const current = STEPS[step];
 
@@ -86,11 +88,50 @@ export default function Booking() {
     if (typeof a === "string") return a.trim().length > 0;
     return false;
   };
+const submitForm = async () => {
+  if (isSubmitting) return;
 
-  const next = () => {
-    if (step < STEPS.length - 1) setStep(step + 1);
-    else setSubmitted(true);
-  };
+  setIsSubmitting(true);
+
+  try {
+    const params = new URLSearchParams({
+      interests: Array.isArray(answers[0])
+        ? answers[0].join(", ")
+        : String(answers[0] || ""),
+
+      age: String(answers[1] || ""),
+
+      goals: Array.isArray(answers[2])
+        ? answers[2].join(", ")
+        : String(answers[2] || ""),
+
+      contact: String(answers[3] || ""),
+    });
+
+    await fetch(
+      "https://script.google.com/macros/s/AKfycbzX0g17JgHDWIn6tY0N0rvEJDkUMPmlfwdy7DeiaGIj7cq7pLEGA6OWNO3udhgDujOc/exec",
+      {
+        method: "POST",
+        body: params,
+      }
+    );
+
+    setSubmitted(true);
+
+  } catch (error) {
+    console.error("Ошибка отправки:", error);
+    alert("Ошибка отправки формы");
+  } finally {
+    setIsSubmitting(false);
+  }
+};
+const next = async () => {
+  if (step < STEPS.length - 1) {
+    setStep(step + 1);
+  } else {
+    await submitForm();
+  }
+};
 
   const back = () => step > 0 && setStep(step - 1);
 
@@ -240,10 +281,14 @@ export default function Booking() {
                 </button>
                 <button
                   onClick={next}
-                  disabled={!canNext()}
+                  disabled={!canNext() || isSubmitting}
                   className="px-7 py-3 rounded-full bg-[var(--color-ink)] text-white font-medium hover:bg-[var(--color-ink-soft)] disabled:opacity-40 disabled:cursor-not-allowed transition flex items-center gap-2"
                 >
-                  {step === STEPS.length - 1 ? "Отправить" : "Дальше"}
+                  {isSubmitting
+  ? "Отправка..."
+  : step === STEPS.length - 1
+  ? "Отправить"
+  : "Дальше"}
                   <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2.5">
                     <path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
