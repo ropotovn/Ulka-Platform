@@ -94,7 +94,7 @@ const submitForm = async () => {
   setIsSubmitting(true);
 
   try {
-    const params = new URLSearchParams({
+    console.log("SUBMIT START");
       interests: Array.isArray(answers[0])
         ? answers[0].join(", ")
         : String(answers[0] || ""),
