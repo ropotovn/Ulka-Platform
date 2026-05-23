@@ -281,7 +281,7 @@ const next = async () => {
                 </button>
                 <button
                   onClick={next}
-                  disabled={!canNext() || isSubmitting}
+                  disabled={false}
                   className="px-7 py-3 rounded-full bg-[var(--color-ink)] text-white font-medium hover:bg-[var(--color-ink-soft)] disabled:opacity-40 disabled:cursor-not-allowed transition flex items-center gap-2"
                 >
                   {isSubmitting
