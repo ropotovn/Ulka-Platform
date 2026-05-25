@@ -147,13 +147,36 @@ export default function Booking() {
     }
   };
 
-  const next = async () => {
-    if (step < STEPS.length - 1) {
-      setStep(step + 1);
-    } else {
-      await submitForm();
-    }
-  };
+ const next = async () => {
+
+  // Шаг 1
+  if (step === 0) {
+    ym(109406469,'reachGoal','dalee_1')
+  }
+
+  // Шаг 2
+  if (step === 1) {
+    ym(109406469,'reachGoal','dalee_2')
+  }
+
+  // Шаг 3
+  if (step === 2) {
+    ym(109406469,'reachGoal','dalee_3')
+  }
+
+  // Отправка формы
+  if (step === STEPS.length - 1) {
+
+    ym(109406469,'reachGoal','send')
+
+    await submitForm();
+
+  } else {
+
+    setStep(step + 1);
+
+  }
+};
 
   const back = () => {
     if (step > 0) {
